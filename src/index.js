@@ -42,7 +42,8 @@ app.listen(4000,async ()=>{
 
 
     //const tweets= await tweetrepo.getAll(2,5); //pagination
-    const tweet= await tweetrepo.get('64a52b42be217188ae7196eb')
+   // const tweet= await tweetrepo.get('64a52b42be217188ae7196eb')
     
-    console.log(tweet.ContentWithEmail);
+    const tweet= await tweetrepo.create({content:"with hooks"})
+    console.log(tweet);
 })
