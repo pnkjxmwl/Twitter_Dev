@@ -36,7 +36,16 @@ class TweetRepository{
 
 
     }
+    async getAll(offset,limit) //pagination
+    {
+        try {
+            const tweet= await Tweet.find().skip(offset).limit(limit)
+            return tweet; 
+        } catch (error) {
+            console.log(error);
+        }
 
+    }
     async update(tweetid,data)
     {
         try {

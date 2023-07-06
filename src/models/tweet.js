@@ -17,5 +17,9 @@ const tweetSchema= new mongoose.Schema({
 
 },{timestamps:true})
 
+tweetSchema.virtual('ContentWithEmail').get(function(){            // adding a virtual
+    return ` ${this.content} \n Created By ${this.userEmail} `
+})
+
 const Tweet=  mongoose.model('Tweet',tweetSchema);
 module.exports= Tweet;
