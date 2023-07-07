@@ -1,12 +1,15 @@
-const express= require('express')
-const connect= require('./config/database')
+import express from 'express'
+import { connect } from './config/database.js'
 const app= express()
 
-const TweetRepository= require('./repository/tweet-repo')
-const Comment= require('./models/comment')
-const Tweet= require('./models/tweet')
-const HashtagRepository= require('./repository/hashtag-repo')
-const TweetService= require('./services/tweet-service')
+// const TweetRepository= require('./repository/tweet-repo')
+// const Comment= require('./models/comment')
+// const Tweet= require('./models/tweet')
+// const HashtagRepository= require('./repository/hashtag-repo')
+// const TweetService= require('./services/tweet-service')
+
+import TweetService from './services/tweet-service.js'
+
 app.listen(4000,async ()=>{
     console.log("server started")
     await connect()
@@ -49,7 +52,7 @@ app.listen(4000,async ()=>{
     // const tweet= await tweetrepo.create({content:"with hooks"})
     // console.log(tweet);
 
-     let repo= new HashtagRepository()
+   //  let repo= new HashtagRepository()
     // await repo.bulkCreate([
     //     { title:"trend",
     //     tweets:[]
@@ -63,7 +66,13 @@ app.listen(4000,async ()=>{
     // ])
     // const resp= await repo.findByName(['trend','excited']);
     // console.log(resp);
-    const  tweetservice= new TweetService();
-    const tweet = await tweetservice.create({ content:"Welcome and have #fun and dont get #bore while its #new"})
-    console.log(tweet);
+   
+   
+    // const  tweetservice= new TweetService();
+    // const tweet = await tweetservice.create({ content:"Welcome and have #fun and dont get #bore while its #new"})
+    // console.log(tweet);
+
+    let service= new TweetService()
+    await service.create({content:"#done with #moduling"})
+
 })
