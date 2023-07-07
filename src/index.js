@@ -5,6 +5,8 @@ const app= express()
 const TweetRepository= require('./repository/tweet-repo')
 const Comment= require('./models/comment')
 const Tweet= require('./models/tweet')
+const HashtagRepository= require('./repository/hashtag-repo')
+const TweetService= require('./services/tweet-service')
 app.listen(4000,async ()=>{
     console.log("server started")
     await connect()
@@ -24,7 +26,7 @@ app.listen(4000,async ()=>{
     // tweet.userEmail='temp@gmail.com'
     // await tweet.save();
 
-    const tweetrepo= new TweetRepository();
+   // const tweetrepo= new TweetRepository();
 // BY DEFAULT MONGO RETTURNS THE OLD DATA NOT THE UPDATED DATA    
  //   const tweet=  await tweetrepo.update('64a52bea6c62dae146a1c78c',{content:'new my twwet works'})
 
@@ -44,6 +46,24 @@ app.listen(4000,async ()=>{
     //const tweets= await tweetrepo.getAll(2,5); //pagination
    // const tweet= await tweetrepo.get('64a52b42be217188ae7196eb')
     
-    const tweet= await tweetrepo.create({content:"with hooks"})
+    // const tweet= await tweetrepo.create({content:"with hooks"})
+    // console.log(tweet);
+
+     let repo= new HashtagRepository()
+    // await repo.bulkCreate([
+    //     { title:"trend",
+    //     tweets:[]
+    // },{
+    //     title:"excited",
+    //     tweets:[]
+    // },{
+    //     title:"python",
+    //     tweets:[]
+    // }
+    // ])
+    // const resp= await repo.findByName(['trend','excited']);
+    // console.log(resp);
+    const  tweetservice= new TweetService();
+    const tweet = await tweetservice.create({ content:"Welcome and have #fun and dont get #bore while its #new"})
     console.log(tweet);
 })
