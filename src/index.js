@@ -1,14 +1,20 @@
 import express from 'express'
 import { connect } from './config/database.js'
+import bodyParser from 'body-parser';
 const app= express()
 
+import apiRoutes from './routes/index.js'
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use('/api',apiRoutes);
+ 
 // const TweetRepository= require('./repository/tweet-repo')
 // const Comment= require('./models/comment')
 // const Tweet= require('./models/tweet')
 // const HashtagRepository= require('./repository/hashtag-repo')
 // const TweetService= require('./services/tweet-service')
 
-import TweetService from './services/tweet-service.js'
+//import TweetService from './services/tweet-service.js'
 
 app.listen(4000,async ()=>{
     console.log("server started")
@@ -72,7 +78,7 @@ app.listen(4000,async ()=>{
     // const tweet = await tweetservice.create({ content:"Welcome and have #fun and dont get #bore while its #new"})
     // console.log(tweet);
 
-    let service= new TweetService()
-    await service.create({content:"#ABC and #Help and #GOKU and #add"})
+    // let service= new TweetService()
+    // await service.create({content:"#ABC and #Help and #GOKU and #add"})
 
 })
