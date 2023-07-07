@@ -73,6 +73,6 @@ app.listen(4000,async ()=>{
     // console.log(tweet);
 
     let service= new TweetService()
-    await service.create({content:"#done with #moduling"})
+    await service.create({content:"#ABC and #Help and #GOKU and #add"})
 
 })
