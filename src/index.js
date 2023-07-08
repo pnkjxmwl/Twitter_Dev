@@ -4,10 +4,13 @@ import bodyParser from 'body-parser';
 const app= express()
 
 import apiRoutes from './routes/index.js'
+import {userRepository , TweetRepository} from './repository/index.js';
+import LikeService from './services/like-service.js';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/api',apiRoutes);
  
+userRepository
 // const TweetRepository= require('./repository/tweet-repo')
 // const Comment= require('./models/comment')
 // const Tweet= require('./models/tweet')
@@ -81,4 +84,17 @@ app.listen(4000,async ()=>{
     // let service= new TweetService()
     // await service.create({content:"#ABC and #Help and #GOKU and #add"})
 
-})
+
+    // const userrepo= new userRepository();
+    // const user=  await userrepo.create({
+    //     email:"pok.com",
+    //     password:"324",
+    //     name:"rahul" 
+    // })
+    // const tweetrepo= new TweetRepository()
+    // const tweet=await tweetrepo.create({s
+    //     content:"yo whatsup #myfriends" 
+    // })
+    const likeservice= new LikeService();
+    likeservice.toggleLike("64a90958f614947046fefe41",'Tweet',"64a901be61d47a3484659fab")
+})  
