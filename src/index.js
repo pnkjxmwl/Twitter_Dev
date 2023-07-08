@@ -95,6 +95,6 @@ app.listen(4000,async ()=>{
     // const tweet=await tweetrepo.create({s
     //     content:"yo whatsup #myfriends" 
     // })
-    const likeservice= new LikeService();
-    likeservice.toggleLike("64a90958f614947046fefe41",'Tweet',"64a901be61d47a3484659fab")
+    // const likeservice= new LikeService();
+    // likeservice.toggleLike("64a90958f614947046fefe41",'Tweet',"64a901be61d47a3484659fab")
 })  
