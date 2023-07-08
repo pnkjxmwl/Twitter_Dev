@@ -16,7 +16,7 @@ class LikeService{
             if(modelType=='Tweet')
             {
 
-                 var likeable= await Tweet.findById(modelId).populate({path:'likes'});
+                 var likeable= await this.tweetrepository.find(modelId);
                  console.log(likeable);  
               
             }
