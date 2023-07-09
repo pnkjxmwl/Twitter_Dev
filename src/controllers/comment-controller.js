@@ -5,7 +5,7 @@ const commentservice= new CommentService();
 export const createComments= async(req,resp)=>{
 
         try {
-            const response= await commentservice.create(req.query.modelId,req.query.modelType,req.body.userId,req.body.content)
+            const response= await commentservice.create(req.query.modelId,req.query.modelType,req.user.id,req.body.content)
             return resp.status(201).json({
                 success:true,
                 message:'SuccesFully Created a new comment',
