@@ -24,3 +24,24 @@ export const signup= async (req,resp)=>{
     }
     
 }
+export const login= async (req,resp)=>{
+
+    try {
+        const token= await userservice.signin(req.body);
+        
+        return resp.status(200).json({
+            message:"Login Success",
+            data:token,
+            success:true
+        })
+    } catch (error) {
+        return resp.status(401).json({
+            message:"Something went wrong",
+            data:{},
+            success:false,
+            err:error
+        })
+    }
+
+
+}
